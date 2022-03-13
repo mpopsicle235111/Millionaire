@@ -3,7 +3,8 @@
 //  whoWantsToBeAMillionaire
 //
 //  Created by Anton Lebedev on 10.03.2022.
-//
+// Line added for making a commit
+// Line added for making a commit
 
 import UIKit
 
@@ -21,63 +22,69 @@ class QuestionsViewController: UIViewController {
          
     private var answerButtons: [Int: UIButton]?
 
-         
-    @IBOutlet var questionValueLabel: UILabel!
-         
-    @IBOutlet var questionLabel: UILabel!
-         
-    @IBOutlet var currentScoreLabel: UILabel!
-         
-    @IBOutlet var answerButtonD: UIButton!
-         
-    @IBOutlet var answerButtonC: UIButton!
-         
-    @IBOutlet var answerButtonB: UIButton!
-         
-    @IBOutlet var answerButtonA: UIButton!
-         
-    @IBOutlet var audienceHelpButton: UIButton!
-         
-    @IBOutlet var callFriendButton: UIButton!
-         
-    @IBOutlet var hideWrongAnswersButton: UIButton!
+    @IBOutlet weak var questionValueLabel: UILabel!
     
+    @IBOutlet weak var questionTextView: UITextView!
+    
+    @IBOutlet weak var currentScoreLabel: UILabel!
+         
+    @IBOutlet weak var answerButtonD: UIButton!
+    
+    @IBOutlet weak var answerButtonC: UIButton!
+         
+    @IBOutlet weak var answerButtonB: UIButton!
+         
+    @IBOutlet weak var answerButtonA: UIButton!
+         
+    @IBOutlet weak var audienceHelpButton: UIButton!
+    
+    @IBOutlet weak var callFriendButton: UIButton!
+    
+    @IBOutlet weak var hideWrongAnswersButton: UIButton!
+    
+
     @IBAction func hideWrongAnswersAction(_ sender: UIButton) {
-             sender.isEnabled = false
-             delegate?.useHint(hintType: .hideInvalids)
-             hideAnswers(buttonId: questionsSource.getAnswersToHide(question: question))
-         }
+        sender.isEnabled = false
+        delegate?.useHint(hintType: .hideInvalids)
+        hideAnswers(buttonId: questionsSource.getAnswersToHide(question: question))
+    }
+
+    @IBAction func callFriendAction(_ sender: UIButton) {
+        sender.isEnabled = false
+        delegate?.useHint(hintType: .callFriend)
+    }
+    
+    @IBAction func audienceHelpAction(_ sender: UIButton) {
+        sender.isEnabled = false
+        delegate?.useHint(hintType: .audienceHelp)
+    }
+   
 
 
-         
-    @IBAction func callButton(_ sender: UIButton) {
-             sender.isEnabled = false
-             delegate?.useHint(hintType: .callFriend)
-         }
-
-         
-    @IBAction func audienceHelpButton(_ sender: UIButton) {
-             sender.isEnabled = false
-             delegate?.useHint(hintType: .audienceHelp)
-         }
-
-         
-    @IBAction func buttonD(_ sender: UIButton) { checkAnswer(button: sender) }
-
-         
-    @IBAction func buttonC(_ sender: UIButton) { checkAnswer(button: sender) }
-
-         
-    @IBAction func buttonB(_ sender: UIButton) { checkAnswer(button: sender) }
-
-         
+    @IBAction func buttonD(_ sender: UIButton) {
+        checkAnswer(button: sender)
+    }
+    
+    @IBAction func buttonC(_ sender: UIButton) {
+        checkAnswer(button: sender)
+    }
+    
+    @IBAction func buttonB(_ sender: UIButton) {
+        checkAnswer(button: sender)
+    }
+    
     @IBAction func buttonA(_ sender: UIButton) { checkAnswer(button: sender) }
 
+
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setButtons()
         delegate?.addTotalQuestions(count: questionsSource.getQuestionsCount())
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,9 +126,9 @@ class QuestionsViewController: UIViewController {
              guard let question = question else {
                  return false
              }
-             questionLabel.text = question.questionText
-             currentScoreLabel.text = "Выигрыш \(delegate?.getSum() ?? 0)"
-             questionValueLabel.text = "Цена вопроса \(question.weight)"
+             questionTextView.text = question.questionText
+             currentScoreLabel.text = "Score \(delegate?.getSum() ?? 0)"
+             questionValueLabel.text = "Question price \(question.weight)"
              answerButtons?.forEach {
                  $0.value.setTitle(question.answers[$0.key], for: .normal)
                  $0.value.isHidden = false
@@ -151,6 +158,10 @@ class QuestionsViewController: UIViewController {
              audienceHelpButton.isEnabled = true
              callFriendButton.isEnabled = true
          }
-   
+    
+    
+    
+            
+    
 
 }

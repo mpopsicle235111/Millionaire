@@ -19,11 +19,8 @@ class StartingScreenViewController: UIViewController {
         resultsLabel.text = getResults()
     }
     
-    @IBOutlet var resultsLabel: UILabel! //{
-    //        didSet {
-    //                resultsLabel.translatesAutoresizingMaskIntoConstraints = false
-    //        }
-    //   }
+    @IBOutlet weak var resultsLabel: UITextView!
+    
     @IBAction func startGameButton(_ sender: UIButton) {
         performSegue(withIdentifier: "startGameSegue", sender: sender)
     }
