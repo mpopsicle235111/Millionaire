@@ -15,9 +15,21 @@ protocol QuestionsViewControllerDelegate: AnyObject {
 class QuestionsViewController: UIViewController {
     
     var delegate: GameSessionDelegate?
-         
-    private let questionsSource = QuestionsSource()
-         
+  
+    
+    let questionsSource = QuestionsSource()
+    
+    var selectionStrategy: SelectionStrategy = .normal
+    
+    private var questionSelectionStrategy: QuestionSelectionStrategy {
+        switch self.selectionStrategy {
+        case .normal:
+            return NormalSelection()
+        case .random:
+            return RandomSelection()
+        }
+    }
+   
     private var question: Question?
          
     private var answerButtons: [Int: UIButton]?
@@ -90,6 +102,7 @@ class QuestionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
              question = questionsSource.getQuestion()
              if !setQuestion(question: question) { exitGameSession() }
+             //print(questionSelectionStrategy)
          }
 
          private func hideAnswers(buttonId: [Int]?) {
@@ -110,7 +123,12 @@ class QuestionsViewController: UIViewController {
              {
                  if button === validButton {
                      delegate?.addAnsweredQuestion(weight: currentQuestion?.weight)
-                     question = questionsSource.getQuestion(weight: currentQuestion?.weight)
+                     //After the question is used, we remove if from the array of questions
+                     questionsSource.removeFirstQuestion()
+                     //We get a question from the array to be displayed
+                     //This actually happens before we remove the above mentioned question
+                     question = questionsSource.getQuestion()
+                     
                  }
              }
              if !setQuestion(question: question) { exitGameSession() }

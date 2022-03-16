@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB2DF4FC27E0BB2B00B7A3C4 /* QuestionSelectionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2DF4FB27E0BB2B00B7A3C4 /* QuestionSelectionStrategy.swift */; };
+		DB2DF50227E26E7A00B7A3C4 /* SelectionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2DF50127E26E7A00B7A3C4 /* SelectionStrategy.swift */; };
 		DB563E8827D8E5A900F1A92F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB563E8727D8E5A900F1A92F /* AppDelegate.swift */; };
 		DB563E8A27D8E5A900F1A92F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB563E8927D8E5A900F1A92F /* SceneDelegate.swift */; };
 		DB563E8F27D8E5A900F1A92F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB563E8D27D8E5A900F1A92F /* Main.storyboard */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB2DF4FB27E0BB2B00B7A3C4 /* QuestionSelectionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSelectionStrategy.swift; sourceTree = "<group>"; };
+		DB2DF50127E26E7A00B7A3C4 /* SelectionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionStrategy.swift; sourceTree = "<group>"; };
 		DB563E8427D8E5A900F1A92F /* whoWantsToBeAMillionaire.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = whoWantsToBeAMillionaire.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB563E8727D8E5A900F1A92F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB563E8927D8E5A900F1A92F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB2DF4F827E0B56F00B7A3C4 /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				DB2DF4FB27E0BB2B00B7A3C4 /* QuestionSelectionStrategy.swift */,
+				DB2DF50127E26E7A00B7A3C4 /* SelectionStrategy.swift */,
+			);
+			path = Strategy;
+			sourceTree = "<group>";
+		};
 		DB563E7B27D8E5A900F1A92F = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +93,7 @@
 				DB563EAB27D9745E00F1A92F /* Models */,
 				DB563EA827D973B500F1A92F /* Memento */,
 				DB563E9E27D8E6AA00F1A92F /* QuestionsSource.swift */,
+				DB2DF4F827E0B56F00B7A3C4 /* Strategy */,
 				DB563EA727D9736100F1A92F /* ViewControllers */,
 				DB563EA627D9734400F1A92F /* Delegate */,
 				DB563E8D27D8E5A900F1A92F /* Main.storyboard */,
@@ -211,6 +225,8 @@
 				DB563EAA27D973D300F1A92F /* CareTaker.swift in Sources */,
 				DB563EAF27D974E200F1A92F /* Question.swift in Sources */,
 				DB563EB227D9752A00F1A92F /* Game.swift in Sources */,
+				DB2DF50227E26E7A00B7A3C4 /* SelectionStrategy.swift in Sources */,
+				DB2DF4FC27E0BB2B00B7A3C4 /* QuestionSelectionStrategy.swift in Sources */,
 				DB563E8827D8E5A900F1A92F /* AppDelegate.swift in Sources */,
 				DB563E8A27D8E5A900F1A92F /* SceneDelegate.swift in Sources */,
 				DB563EAD27D9749800F1A92F /* GameSessionResult.swift in Sources */,

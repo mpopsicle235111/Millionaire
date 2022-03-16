@@ -21,11 +21,25 @@ class StartingScreenViewController: UIViewController {
     
     @IBOutlet weak var resultsLabel: UITextView!
     
+    
     @IBAction func startGameButton(_ sender: UIButton) {
         performSegue(withIdentifier: "startGameSegue", sender: sender)
     }
   
-
+    //These variables are added for question selection strategy
+    @IBOutlet weak var questionSelectionStrategyControl: UISegmentedControl!
+    
+    private var selectedStrategy: SelectionStrategy {
+        switch self.questionSelectionStrategyControl.selectedSegmentIndex {
+        case 0:
+            return .normal
+        case 1:
+            return .random
+        default:
+            return .normal
+        }
+    }
+    
     override func viewDidLoad() {
         
         
@@ -41,12 +55,16 @@ class StartingScreenViewController: UIViewController {
                  guard let destinationVC = segue.destination
                      as? QuestionsViewController else { return }
                  if Game.instance.session == nil {
-                     let session = GameSession()
+                    let session = GameSession()
                      Game.instance.session = session
                      destinationVC.delegate = session
+                     //This line is added for question selection strategy
+                     destinationVC.selectionStrategy = self.selectedStrategy
+                     print(selectedStrategy)
                  }
              }
-  
+        
+      
 
     }
     private func getResults() -> String {

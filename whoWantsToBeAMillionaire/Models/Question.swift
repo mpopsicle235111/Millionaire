@@ -12,6 +12,7 @@ struct Question {
      let validAnswerId: Int
      let questionText: String
      let weight: Int
+     
 
      init(question: String,
           answers: [Int: String],

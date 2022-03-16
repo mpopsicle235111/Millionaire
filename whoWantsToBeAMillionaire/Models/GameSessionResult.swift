@@ -21,7 +21,7 @@ struct GameSessionResult: Codable {
      func description() -> String {
          "Cash: " + String(money) + 
              "  Answers: " + String(answered) +
-             " Success: " + String(percent) + "%" + " ================="
+             " Success: " + String(percent) + "%" + " ==================="
      }
 
      enum CodingKeys: String, CodingKey {
