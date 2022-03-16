@@ -8,6 +8,12 @@
 import Foundation
 
 final class GameSession: GameSessionDelegate {
+    
+//     private let createQuestionSelectionStrategy: selectedQuestionSelectionStrategy
+//     init(createQuestionSelectionStrategy: CreateQuestionSelectionStrategy) {
+//         self.createQuestionSelectionStrategy = createQuestionSelectionStrategy
+//     }
+    
      private var currentSum: Int?
      private var answeredCount: Int?
      private var totalCount: Int?

@@ -47,12 +47,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="6qa-9e-Y6U">
+                                <rect key="frame" x="25" y="473" width="364" height="32"/>
+                                <segments>
+                                    <segment title="Normal Questions"/>
+                                    <segment title="Random Questions"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6qa-9e-Y6U" firstAttribute="top" secondItem="Cpb-c9-uvB" secondAttribute="bottom" constant="70" id="0yM-1l-MNf"/>
+                            <constraint firstItem="6qa-9e-Y6U" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="1FS-kP-Vvc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nU8-r7-HU5" secondAttribute="trailing" constant="25" id="1xU-ww-E09"/>
                             <constraint firstItem="nU8-r7-HU5" firstAttribute="top" secondItem="JS6-XQ-fmh" secondAttribute="bottom" constant="5" id="2Tg-Oi-uFH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="6qa-9e-Y6U" secondAttribute="trailing" constant="25" id="5rq-ru-xZp"/>
                             <constraint firstItem="nU8-r7-HU5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="F73-Pr-evi"/>
                             <constraint firstItem="Cpb-c9-uvB" firstAttribute="top" secondItem="6ac-we-hxe" secondAttribute="bottom" constant="50" id="Hfn-Ym-gmc"/>
                             <constraint firstItem="6ac-we-hxe" firstAttribute="top" secondItem="nU8-r7-HU5" secondAttribute="bottom" constant="55" id="JhR-Mm-FAO"/>
@@ -66,6 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="questionSelectionStrategyControl" destination="6qa-9e-Y6U" id="2wg-sN-jes"/>
                         <outlet property="resultsLabel" destination="nU8-r7-HU5" id="byM-tT-yjV"/>
                         <segue destination="2Ej-5B-Qw4" kind="showDetail" identifier="startGameSegue" id="Gho-5W-jGT"/>
                     </connections>

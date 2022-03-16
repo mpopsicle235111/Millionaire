@@ -8,8 +8,21 @@
 import Foundation
 
 final class QuestionsSource {
-    //IMPORTANS: the questions' weight must be always incresing, you can have to start array with minimum weight
-    //and then increase weight from question to questions. The weights can not be equal.
+    
+    var selectionStrategy: SelectionStrategy = .normal
+    
+    private var questionSelectionStrategy: QuestionSelectionStrategy {
+        switch self.selectionStrategy {
+        case .normal:
+            return NormalSelection()
+        case .random:
+            return RandomSelection()
+        }
+    }
+    
+    
+    //IMPORTANT: the questions' weight must be always increasing, you have to start array with minimum weight
+    //and then increase weight from question to question. The weights can not be equal.
     //Otherwise it will not work properly.
     private var questions = [
          Question(question: "The Sherlock Holmes' way of thinking, where the conclusions were derived from common to private, is called...",
@@ -26,7 +39,6 @@ final class QuestionsSource {
                             4: "produced"],
                   validAnswer: 2,
                   weight: 200),
-
          Question(question: "The Greek philosopher Xenophon's work about the housekeeping was called...",
                   answers: [1: "Chrematistics",
                             2: "Hoovephonicus",
@@ -84,14 +96,21 @@ final class QuestionsSource {
                   validAnswer: 1,
                   weight: 1000)
      ]
+    
+     
+    
      func getQuestionsCount() -> Int { questions.count }
-     func getQuestion(weight: Int? = nil) -> Question? {
-         let weight = weight ?? 0
-         let questions = questions
-             .filter { $0.weight > weight }
-             .sorted(by: { $0.weight < $1.weight })
-         guard let minWeight = questions.first?.weight else { return nil }
-         return questions.filter { $0.weight == minWeight }.randomElement()
+    
+    
+     func getQuestion() -> Question? {
+        var questions = questions
+        print(questions)
+        return questions.first
+     }
+     
+     func removeFirstQuestion() {
+        if !questions.isEmpty
+        { questions.removeFirst() }
      }
 
      func getAnswersToHide(question: Question?) -> [Int] {
