@@ -9,13 +9,14 @@ import Foundation
 
 final class GameSession: GameSessionDelegate {
     
-//     private let createQuestionSelectionStrategy: selectedQuestionSelectionStrategy
+//     private let createQuestionSelectionStrategy: CreateQuestionSelectionStrategy
 //     init(createQuestionSelectionStrategy: CreateQuestionSelectionStrategy) {
 //         self.createQuestionSelectionStrategy = createQuestionSelectionStrategy
 //     }
     
      private var currentSum: Int?
      private var answeredCount: Int?
+     private var counter: Int?
      private var totalCount: Int?
      private var hints: [HintType: Int] = [
          .callFriend: 1,
