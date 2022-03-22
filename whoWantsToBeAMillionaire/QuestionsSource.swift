@@ -7,24 +7,19 @@
 
 import Foundation
 
-final class QuestionsSource {
+class QuestionsSource {
     
-    var selectionStrategy: SelectionStrategy = .normal
-    
-    private var questionSelectionStrategy: QuestionSelectionStrategy {
-        switch self.selectionStrategy {
-        case .normal:
-            return NormalSelection()
-        case .random:
-            return RandomSelection()
-        }
-    }
+//    var questionSelectionStrategy: QuestionSelectionStrategy
+//    init(questionSelectionStrategy: QuestionSelectionStrategy) {
+//        self.questionSelectionStrategy = questionSelectionStrategy
+//
+//    }
     
     
     //IMPORTANT: the questions' weight must be always increasing, you have to start array with minimum weight
     //and then increase weight from question to question. The weights can not be equal.
     //Otherwise it will not work properly.
-    private var questions = [
+    var questions = [
          Question(question: "The Sherlock Holmes' way of thinking, where the conclusions were derived from common to private, is called...",
                   answers: [1: "Deduction",
                             2: "Reduction",
@@ -32,10 +27,10 @@ final class QuestionsSource {
                             4: "Reproduction"],
                   validAnswer: 1,
                   weight: 100),
-         Question(question: "The ecomonic good is characterized by the fact, that it is...",
-                  answers: [1: "virtually unlimited",
+         Question(question: "In economics, the good is characterized by the fact, that it is...",
+                  answers: [1: "unlimited",
                             2: "limited",
-                            3: "sold in every store",
+                            3: "everywhere",
                             4: "produced"],
                   validAnswer: 2,
                   weight: 200),
@@ -50,13 +45,13 @@ final class QuestionsSource {
                   answers: [1: "wheat bushels",
                             2: "wool",
                             3: "golden coins",
-                            4: "educated people"],
+                            4: "education"],
                   validAnswer: 3,
                   weight: 400),
          Question(question: "In François Quesnay's Tableau Economique, who holds the money at the beginnig of the year?",
-                  answers: [1: "productive class",
+                  answers: [1: "producers",
                             2: "sterile class",
-                            3: "property owners",
+                            3: "landlords",
                             4: "clergy"],
                   validAnswer: 2,
                   weight: 500),
@@ -97,13 +92,21 @@ final class QuestionsSource {
                   weight: 1000)
      ]
     
-     
-    
      func getQuestionsCount() -> Int { questions.count }
+    
+     func appendNewQuestion() {
+        questions.append(newQuestionToAdd)
+     }
     
     
      func getQuestion() -> Question? {
         var questions = questions
+        print(questions)
+        return questions.first
+     }
+    
+     func getQuestion2() -> Question? {
+        var questions = questions.shuffled()
         print(questions)
         return questions.first
      }

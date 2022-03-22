@@ -8,9 +8,14 @@
 
 import UIKit
 
+
+
+
 class StartingScreenViewController: UIViewController {
     
-
+    var selectedQuestionSelectionStrategy: QuestionSelectionStrategy = .normal
+    var questionSelectionStrategy: QuestionSelectionStrategy = .normal
+    var delegate: GameSessionDelegate?
        
     @IBAction func getResultsButton(_ sender: UIButton) {
 //        didSet {
@@ -26,22 +31,12 @@ class StartingScreenViewController: UIViewController {
         performSegue(withIdentifier: "startGameSegue", sender: sender)
     }
   
-    //These variables are added for question selection strategy
-    @IBOutlet weak var questionSelectionStrategyControl: UISegmentedControl!
-    
-    private var selectedStrategy: SelectionStrategy {
-        switch self.questionSelectionStrategyControl.selectedSegmentIndex {
-        case 0:
-            return .normal
-        case 1:
-            return .random
-        default:
-            return .normal
-        }
+    @IBAction func gameSettingsButton(_ sender: UIButton) {
+        performSegue(withIdentifier: "goChangeGameSettingsSegue", sender: sender)
     }
     
+    
     override func viewDidLoad() {
-        
         
         try? Game.instance.results = CareTaker<[GameSessionResult]>().load()
                      ?? [GameSessionResult]()
@@ -59,8 +54,8 @@ class StartingScreenViewController: UIViewController {
                      Game.instance.session = session
                      destinationVC.delegate = session
                      //This line is added for question selection strategy
-                     destinationVC.selectionStrategy = self.selectedStrategy
-                     print(selectedStrategy)
+                     destinationVC.questionSelectionStrategy = self.selectedQuestionSelectionStrategy
+                     print(selectedQuestionSelectionStrategy)
                  }
              }
         
